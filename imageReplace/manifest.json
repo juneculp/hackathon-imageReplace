@@ -1,15 +1,37 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "Replace Images with Cohort 28 Faces",
-    "version": "1.0",
-    "web_accessible_resources": [
-        "images/*.png"
-    ],
-    "content_scripts": [
+    "version": "3.0",
+    "web_accessible_resources": [{
+        "resources" : ["/images/*.png"],
+        "matches" : ["<all_urls>"]
+    }],
+    "permissions":["storage","activeTab","scripting"],
+    "action" : {
+        "default_popup": "popup.html",
+
+        "default_icon": {
+            "16": "/images/favicon.png",
+            "32": "/images/favicon.png",
+            "48": "/images/favicon.png",
+            "128": "/images/favicon.png"
+          
+        },
+          "icons": {
+            "16": "/images/favicon.png",
+            "32": "/images/favicon.png",
+            "48": "/images/favicon.png",
+            "128": "/images/favicon.png"
+          }
+    },
+    "content_scripts" : [
         {
             "matches": [
                 "<all_urls>"
             ],
-            "js": ["content.js"]
-        }]
+            "js": ["popup.js","options.js"]
+        }
+     ],
+     "options_page": "options.html"
+    
 }
